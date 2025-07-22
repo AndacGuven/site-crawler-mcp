@@ -7,7 +7,7 @@ setup(
     name="site-crawler-mcp",
     version="0.1.0",
     author="Andac Guven",
-    author_email="andac.guven@example.com",
+    author_email="yonetim@andacguven.com",
     description="MCP server for crawling websites and extracting assets",
     long_description=long_description,
     long_description_content_type="text/markdown",
