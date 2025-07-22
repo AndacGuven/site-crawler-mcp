@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "site-crawler": {
+      "command": "python",
+      "args": ["-m", "site_crawler.server"],
+      "cwd": "C:\\Users\\dicit\\Desktop\\mcp\\hackhaton\\src",
+      "env": {
+        "PYTHONPATH": "C:\\Users\\dicit\\Desktop\\mcp\\hackhaton\\src"
+      }
+    }
+  }
+}
