@@ -21,6 +21,22 @@ pip install site-crawler-mcp
 ```
 
 ### From Source (Development)
+
+#### Using uv (Recommended)
+```bash
+# Clone the repository
+git clone https://github.com/AndacGuven/site-crawler-mcp.git
+cd site-crawler-mcp
+
+# Create virtual environment with Python 3.12
+uv venv --python 3.12
+source .venv/bin/activate  # On Windows: .venv\Scripts\activate
+
+# Install dependencies and package
+uv sync
+```
+
+#### Using pip
 ```bash
 # Clone the repository
 git clone https://github.com/AndacGuven/site-crawler-mcp.git
@@ -46,24 +62,53 @@ pip install -e .
 
 ### As an MCP Server
 
-Add to your MCP configuration file (usually located at `%APPDATA%\Claude\claude_desktop_config.json` on Windows):
+Add to your MCP configuration file:
+- **Windows**: `%APPDATA%\Claude\claude_desktop_config.json`
+- **macOS**: `~/Library/Application Support/Claude/claude_desktop_config.json`
+- **Linux**: `~/.config/Claude/claude_desktop_config.json`
 
+#### Using uvx (Recommended)
+```json
+{
+  "mcpServers": {
+    "site-crawler": {
+      "command": "uvx",
+      "args": ["--from", "/path/to/site-crawler-mcp", "site-crawler-mcp"]
+    }
+  }
+}
+```
+
+#### Using uv run
+```json
+{
+  "mcpServers": {
+    "site-crawler": {
+      "command": "uv",
+      "args": ["run", "site_crawler"],
+      "cwd": "/path/to/site-crawler-mcp"
+    }
+  }
+}
+```
+
+#### Using python directly
 ```json
 {
   "mcpServers": {
     "site-crawler": {
       "command": "python",
       "args": ["-m", "site_crawler.server"],
-      "cwd": "C:\\path\\to\\site-crawler-mcp\\src",
+      "cwd": "/path/to/site-crawler-mcp/src",
       "env": {
-        "PYTHONPATH": "C:\\path\\to\\site-crawler-mcp\\src"
+        "PYTHONPATH": "/path/to/site-crawler-mcp/src"
       }
     }
   }
 }
 ```
 
-**Note**: Replace `C:\\path\\to\\site-crawler-mcp` with your actual project path.
+**Note**: Replace `/path/to/site-crawler-mcp` with your actual project path. On Windows, use backslashes and drive letters (e.g., `C:\\Users\\YourName\\site-crawler-mcp`).
 
 ### Available Tools
 
@@ -145,13 +190,29 @@ Crawl a website and extract various assets based on specified modes.
 
 ### Requirements
 
-- Python 3.8+
+- Python 3.10+
 - BeautifulSoup4
 - aiohttp
 - MCP SDK
+- uv (recommended for development)
 
 ### Setup Development Environment
 
+#### Using uv (Recommended)
+```bash
+# Clone the repository
+git clone https://github.com/AndacGuven/site-crawler-mcp.git
+cd site-crawler-mcp
+
+# Create virtual environment with Python 3.12
+uv venv --python 3.12
+source .venv/bin/activate  # On Windows: .venv\Scripts\activate
+
+# Install dependencies and package
+uv sync
+```
+
+#### Using pip
 ```bash
 # Clone the repository
 git clone https://github.com/AndacGuven/site-crawler-mcp.git
@@ -168,9 +229,30 @@ pip install -r requirements.txt
 pip install -e .
 ```
 
+### Running the Server
+
+#### Using uv
+```bash
+# Run the MCP server
+uv run site_crawler
+# or
+uv run site-crawler-mcp
+# or
+uv run python -m site_crawler.server
+```
+
+#### Using python directly
+```bash
+python -m site_crawler.server
+```
+
 ### Running Tests
 
 ```bash
+# Using uv
+uv run pytest tests/
+
+# Using pip
 pytest tests/
 ```
 
@@ -180,7 +262,7 @@ pytest tests/
 site-crawler-mcp/
 ├── README.md
 ├── requirements.txt
-├── setup.py
+├── pyproject.toml
 ├── src/
 │   └── site_crawler/
 │       ├── __init__.py

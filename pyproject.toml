@@ -7,10 +7,10 @@ name = "site-crawler-mcp"
 version = "0.1.0"
 description = "MCP server for crawling websites and extracting assets"
 readme = "README.md"
-requires-python = ">=3.8"
+requires-python = ">=3.10"
 license = {text = "MIT"}
 authors = [
-    {name = "Andac Guven", email = "andac.guven@example.com"}
+    {name = "Andac Guven", email = "yonetim@andacguven.com"}
 ]
 keywords = ["mcp", "crawler", "web-scraping", "seo", "images"]
 classifiers = [
@@ -46,7 +46,8 @@ dev = [
 ]
 
 [project.scripts]
-site-crawler-mcp = "site_crawler.server:main"
+site-crawler-mcp = "site_crawler.main:main"
+site_crawler = "site_crawler.main:main"
 
 [project.urls]
 Homepage = "https://github.com/AndacGuven/site-crawler-mcp"
@@ -71,3 +72,6 @@ python_version = "3.8"
 warn_return_any = true
 warn_unused_configs = true
 disallow_untyped_defs = true
+
+[tool.ruff.lint]
+select = ["F"]

@@ -4,6 +4,7 @@ __version__ = "0.1.0"
 __author__ = "Your Name"
 
 from .crawler import SiteCrawler
-from .server import main
+from .main import main
+from .server import SiteCrawlerServer
 
-__all__ = ["SiteCrawler", "main"]
+__all__ = ["SiteCrawler", "SiteCrawlerServer", "main"]
